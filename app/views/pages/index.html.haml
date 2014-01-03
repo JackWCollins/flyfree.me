@@ -1,8 +1,17 @@
 .row.row-offcanvas.row-offcanvas-right
   .col-xs-12
-    .jumbotron
+    .jumbotron.logo
       %h1 flyfree.me
       %p The home for Skydiving and BASE jumping videos submitted by you!
+      %ul.list-inline
+        %li
+          %a{:href => "#"} Sign In
+        %li or
+        %li 
+          %a{:href => "#"} Sign Up
+        %li to
+        %li
+          %a.btn.btn-primary{:href => "#", :role => "button"} Submit a Video &raquo;
     .row
       .col-6.col-sm-6.col-lg-4
         %h2 Skydiving
@@ -34,3 +43,7 @@
         %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
         %p
           %a.btn.btn-primary{:href => "#", :role => "button"} Swooping Videos &raquo;
+    .row
+      .col-xs-12
+        %h4 Browse the top videos below or 
+        %a{:href => "#"} check out more categories
