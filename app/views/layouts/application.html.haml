@@ -1,0 +1,25 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title flyfree.me
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    %link{:href => "../../dist/css/bootstrap.min.css", :rel => "stylesheet"}
+    %link{:href => "../../docs-assets/ico/favicon.png", :rel => "shortcut icon"}
+    = csrf_meta_tag
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+
+  %body
+    .navbar.navbar-fixed-top.navbar-inverse{:role => "navigation"}
+      = render '/shared/header'
+    .container
+      = yield
+    %script{:src => "https://code.jquery.com/jquery-1.10.2.min.js"}
+    %script{:src => "../../dist/js/bootstrap.min.js"}
+    %script{:src => "offcanvas.js"}
+</body>
+</html>
