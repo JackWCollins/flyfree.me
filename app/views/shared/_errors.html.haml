@@ -1,0 +1,8 @@
+- if obj.errors.any?
+  .row
+    .alert.alert-error.span8
+      %h5 Please fix the following errors:
+      %ul
+        - obj.errors.full_messages.each do |msg|
+          %li
+            = msg

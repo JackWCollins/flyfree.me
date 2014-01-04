@@ -11,7 +11,8 @@
           %a{:href => "#"} Sign Up
         %li to
         %li
-          %a.btn.btn-primary{:href => "#", :role => "button"} Submit a Video &raquo;
+          = link_to(new_video_path, class: "btn btn-primary") do
+            Submit a Video &raquo;
     .row
       .col-6.col-sm-6.col-lg-4
         %h2 Skydiving
