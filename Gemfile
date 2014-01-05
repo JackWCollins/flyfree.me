@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt-ruby'
 gem 'haml-rails'
+gem 'fabrication'
+gem 'faker'
 
 group :development do
 	gem 'sqlite3'
