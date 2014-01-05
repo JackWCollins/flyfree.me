@@ -48,3 +48,8 @@
       .col-xs-12
         %h4 Browse the top videos below or 
         %a{:href => "#"} check out more categories
+    .row
+      - @videos.each do |video|
+        .col-6.col-sm-6.col-lg-4
+          = link_to "#{video.title}", video.url
+          = video.description
