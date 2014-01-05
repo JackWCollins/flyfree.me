@@ -51,5 +51,5 @@
     .row
       - @videos.each do |video|
         .col-6.col-sm-6.col-lg-4
-          = link_to "#{video.title}", video.url
-          = video.description
+          = link_to image_tag(video.thumbnail), video_path(video)
+          

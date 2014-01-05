@@ -13,6 +13,10 @@ class VideosController < ApplicationController
     	render :new
     end
   end
+
+  def show
+    @video = Video.find(params[:id])
+  end
   
   private
 

@@ -12,6 +12,8 @@ gem 'bcrypt-ruby'
 gem 'haml-rails'
 gem 'fabrication'
 gem 'faker'
+gem 'video_info'
+gem 'dragonfly'
 
 group :development do
 	gem 'sqlite3'
