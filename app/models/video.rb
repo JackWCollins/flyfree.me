@@ -6,13 +6,6 @@ class Video < ActiveRecord::Base
   def embed_code
     video = VideoInfo.new(self.url)
     code = video.embed_code
-    # if provider == "YouTube"
-    #   code = '%iframe{:allowfullscreen => "allowfullscreen", :frameborder => "0", :src => "http://www.youtube.com/embed/#{video.video_id}"}'
-    # elsif provider == "Vimeo"
-    #   code = '%iframe{:allowfullscreen => "", :frameborder => "0", :height => "281", :mozallowfullscreen => "", :src => "//player.vimeo.com/video/#{video.video_id}", :webkitallowfullscreen => "", :width => "500"}'
-    # else
-    #   flash[:error] = "Video cannot be loaded. We apologize"
-    # end
   end
 
   def video_id
