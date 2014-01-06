@@ -16,9 +16,9 @@ class Video < ActiveRecord::Base
   def thumbnail
   	video = VideoInfo.new(self.url)
   	provider = video.provider
-  	if provider = "YouTube"
+  	if provider == "YouTube"
   	  thumbnail = video.thumbnail_medium
-  	elsif provider = "Vimeo"
+  	elsif provider == "Vimeo"
   	  thumbnail = video.thumbnail_large
   	end
   end
