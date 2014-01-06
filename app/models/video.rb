@@ -4,13 +4,20 @@ class Video < ActiveRecord::Base
   validates_presence_of :title, :url, :description
 
   def embed_code
-    gem_video = VideoInfo.new(self.url)
-    code = gem_video.embed_code
+    video = VideoInfo.new(self.url)
+    code = video.embed_code
+    # if provider == "YouTube"
+    #   code = '%iframe{:allowfullscreen => "allowfullscreen", :frameborder => "0", :src => "http://www.youtube.com/embed/#{video.video_id}"}'
+    # elsif provider == "Vimeo"
+    #   code = '%iframe{:allowfullscreen => "", :frameborder => "0", :height => "281", :mozallowfullscreen => "", :src => "//player.vimeo.com/video/#{video.video_id}", :webkitallowfullscreen => "", :width => "500"}'
+    # else
+    #   flash[:error] = "Video cannot be loaded. We apologize"
+    # end
   end
 
   def video_id
-  	gem_video = VideoInfo.new(self.url)
-  	id = gem_video.video_id
+  	video = VideoInfo.new(self.url)
+  	id = video.video_id
   end
 
   def thumbnail
@@ -24,7 +31,7 @@ class Video < ActiveRecord::Base
   end
 
   def video_provider
-    gem_video = VideoInfo.new(self.url)
-    provider = gem_video.provider
+    video = VideoInfo.new(self.url)
+    provider = video.provider
   end
 end

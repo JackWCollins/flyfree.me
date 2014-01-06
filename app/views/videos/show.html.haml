@@ -1,3 +1,6 @@
 %h2 #{@video.title}
 
-%iframe{:allowscriptaccess => "always", :allowFullScreen => "true", :frameborder => "0", :height => "430", :src => "http://www.youtube.com/embed/#{@video.video_id}", :title => "YouTube video player", :width => "640"}
+- if @video.video_provider == "YouTube"
+  %iframe{:allowfullscreen => "allowfullscreen", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@video.video_id}", :height => "540", :width => "960"}
+- elsif @video.video_provider == "Vimeo"
+  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "562", :mozallowfullscreen => "", :src => "//player.vimeo.com/video/#{@video.video_id}", :webkitallowfullscreen => "", :width => "1000"}

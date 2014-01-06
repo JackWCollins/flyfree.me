@@ -14,40 +14,7 @@
           = link_to(new_video_path, class: "btn btn-primary") do
             Submit a Video &raquo;
     .row
-      .col-6.col-sm-6.col-lg-4
-        %h2 Skydiving
-        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        %p
-          %a.btn.btn-primary{:href => "#", :role => "button"} Skydiving Videos &raquo;
-      .col-6.col-sm-6.col-lg-4
-        %h2 BASE Jumping
-        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        %p
-          %a.btn.btn-primary{:href => "#", :role => "button"} BASE Videos &raquo;
-      .col-6.col-sm-6.col-lg-4
-        %h2 Angle/Freeflying
-        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        %p
-          %a.btn.btn-primary{:href => "#", :role => "button"} Freeflying Videos &raquo;
-      .col-6.col-sm-6.col-lg-4
-        %h2 Wingsuiting
-        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        %p
-          %a.btn.btn-primary{:href => "#", :role => "button"} Wingsuiting Videos &raquo;
-      .col-6.col-sm-6.col-lg-4
-        %h2 Relative Work
-        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        %p
-          %a.btn.btn-primary{:href => "#", :role => "button"} RW Videos &raquo;
-      .col-6.col-sm-6.col-lg-4
-        %h2 Swooping
-        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        %p
-          %a.btn.btn-primary{:href => "#", :role => "button"} Swooping Videos &raquo;
-    .row
-      .col-xs-12
-        %h4 Browse the top videos below or 
-        %a{:href => "#"} check out more categories
+      %h2.logo Featured Videos
     .row
       - @videos.each do |video|
         .col-6.col-sm-6.col-lg-4
