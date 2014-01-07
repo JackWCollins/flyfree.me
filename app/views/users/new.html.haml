@@ -1,0 +1,19 @@
+%h2 Register for flyfree.me
+.well
+  = render "shared/errors", obj: @user
+  .row
+    .col-sm-10.col-sm-offset-1
+      = form_for @user do |f|
+        .form-group
+          = f.label "Email"
+          = f.email_field :email, class: "form-control"
+        .form-group
+          = f.label "Password"
+          = f.password_field :password, class: "form-control"
+        .form-group
+          = f.label "Username"
+          = f.text_area :username, class: "form-control"
+        .form-group
+          = f.label "Full Name"
+          = f.text_area :full_name, class: "form-control"
+        = f.submit("Register!", class: 'btn btn-primary')
