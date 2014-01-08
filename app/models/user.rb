@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :videos
   validates_presence_of :email, :password, :username
   validates_uniqueness_of :email
 

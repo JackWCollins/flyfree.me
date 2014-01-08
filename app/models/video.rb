@@ -1,6 +1,8 @@
 class Video < ActiveRecord::Base
   require 'video_info'
 
+  belongs_to :user
+
   validates_presence_of :title, :url, :description
 
   def embed_code

@@ -5,10 +5,10 @@
       %p The home for Skydiving and BASE jumping videos submitted by you!
       %ul.list-inline
         %li
-          %a{:href => "#"} Sign In
+          = link_to "Sign In", sign_in_path
         %li or
         %li 
-          %a{:href => "#"} Sign Up
+          = link_to "Sign Up", register_path
         %li to
         %li
           = link_to(new_video_path, class: "btn btn-primary") do
