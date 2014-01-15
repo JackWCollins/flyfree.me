@@ -1,11 +1,13 @@
 class VideosController < ApplicationController
-
+  before_action :require_user, except: [:show]
   def new
   	@video = Video.new
   end
 
   def create
     @video = Video.new(video_params)
+    @video.user = current_user
+    
     if @video.save
     	flash[:notice] = "Your video was submitted!"
     	redirect_to root_path

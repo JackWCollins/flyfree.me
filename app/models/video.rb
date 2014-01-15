@@ -5,11 +5,6 @@ class Video < ActiveRecord::Base
 
   validates_presence_of :title, :url, :description
 
-  def embed_code
-    video = VideoInfo.new(self.url)
-    code = video.embed_code
-  end
-
   def video_id
   	video = VideoInfo.new(self.url)
   	id = video.video_id
