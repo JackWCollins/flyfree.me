@@ -1,5 +1,10 @@
 .row.row-offcanvas.row-offcanvas-right
   .col-xs-12
+    - flash.each do |name, msg|
+      - if msg.is_a?(String)
+        %div{:class => "alert alert-#{name == :notice ? "info" : "danger"}"}
+          %a.close{"data-dismiss" => "alert"} ×
+          = content_tag :div, msg, :id => "flash_#{name}"
     .jumbotron.logo-text
       .row
         .col-sm-8
