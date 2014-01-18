@@ -8,4 +8,5 @@ FlyfreeMe::Application.routes.draw do
   resources :videos
   resources :users, except: [:destroy]
   resources :sessions, only: [:create, :destroy]
+  resources :reviews, only: [:create]
 end

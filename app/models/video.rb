@@ -2,6 +2,7 @@ class Video < ActiveRecord::Base
   require 'video_info'
 
   belongs_to :user
+  has_many :reviews
 
   validates_presence_of :title, :url, :description
 
