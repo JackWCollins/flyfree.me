@@ -1,32 +1,33 @@
-%h2 #{@video.title}
-
-- if @video.video_provider == "YouTube"
-  %iframe{:allowfullscreen => "allowfullscreen", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@video.video_id}", :height => "540", :width => "960"}
-- elsif @video.video_provider == "Vimeo"
-  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "562", :mozallowfullscreen => "", :src => "//player.vimeo.com/video/#{@video.video_id}", :webkitallowfullscreen => "", :width => "1000"}
-
-%h4 Submitted by #{@video.user.username}
-
-.row
-  .col-sm-10
-    = form_for [@video, Review.new] do |f|
-      .form-group
-        %label Rate this video
-        = f.select :rating, options_for_video_reviews, {}, {class: "form-control"}
-      .form-group
-        %label Review
-        = f.text_area :content, rows: 6, class: "form-control"
-      .form-group
-        %input(type="submit" value="Submit" class="btn btn-primary")
-        = link_to "Cancel", @video
-    %h4 Reviews (#{@reviews.count})
-    %ul
-      - @reviews.each do |review|
-        %li.row
-          .col-sm-2
-            %span Rating: #{review.rating}
-            %p
-              by
-              = link_to review.user.username, review.user
-          .col-sm-8
-            %p= review.content
+.video-content
+  %h2 #{@video.title}
+  
+  - if @video.video_provider == "YouTube"
+    %iframe{:allowfullscreen => "allowfullscreen", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@video.video_id}", :height => "540", :width => "960"}
+  - elsif @video.video_provider == "Vimeo"
+    %iframe{:allowfullscreen => "", :frameborder => "0", :height => "562", :mozallowfullscreen => "", :src => "//player.vimeo.com/video/#{@video.video_id}", :webkitallowfullscreen => "", :width => "1000"}
+  
+  %h4 Submitted by #{@video.user.username}
+  
+  .row
+    .col-sm-10
+      = form_for [@video, Review.new] do |f|
+        .form-group
+          %label Rate this video
+          = f.select :rating, options_for_video_reviews, {}, {class: "form-control"}
+        .form-group
+          %label Review
+          = f.text_area :content, rows: 3, class: "form-control"
+        .form-group
+          %input(type="submit" value="Submit" class="btn btn-primary")
+          = link_to "Cancel", @video
+      %h4 Reviews (#{@reviews.count})
+      %ul
+        - @reviews.each do |review|
+          %li.row.review-well
+            .col-sm-2
+              %span Rating: #{review.rating}
+              %p
+                by
+                = link_to review.user.username, review.user
+            .col-sm-8
+              %p= review.content
