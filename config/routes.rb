@@ -5,8 +5,12 @@ FlyfreeMe::Application.routes.draw do
   post 'sign_in', to: "sessions#create"
   get 'sign_out', to: "sessions#destroy"
 
-  resources :videos
+  resources :videos do
+  	resources :reviews, only: [:create]
+  end
+
   resources :users, except: [:destroy]
+
   resources :sessions, only: [:create, :destroy]
-  resources :reviews, only: [:create]
+  
 end

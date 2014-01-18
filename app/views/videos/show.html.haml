@@ -8,14 +8,14 @@
 %h4 Submitted by #{@video.user.username}
 
 .row
-  .col-sm-10.col-sm-offset-1
+  .col-sm-10
     = form_for [@video, Review.new] do |f|
       .form-group
         %label Rate this video
         = f.select :rating, options_for_video_reviews, {}, {class: "form-control"}
       .form-group
-      	%label Review
-      	= f.text_area :content, rows: 6, class: "form-control"
+        %label Review
+        = f.text_area :content, rows: 6, class: "form-control"
       .form-group
         %input(type="submit" value="Submit" class="btn btn-primary")
         = link_to "Cancel", @video

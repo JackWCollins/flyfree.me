@@ -69,4 +69,19 @@ describe VideosController do
 			end
 		end
 	end
+
+	describe "GET show" do
+		it "sets the @video" do
+			video = Fabricate(:video)
+			get :show, id: video.id
+			expect(assigns(:video)).to eq(video)
+		end
+		it "sets the @reviews" do
+			video = Fabricate(:video)
+			review1 = Fabricate(:review, video: video)
+			review2 = Fabricate(:review, video: video)
+			get :show, id: video.id
+			expect(assigns(:reviews)).to match_array([review1, review2])
+		end
+	end
 end

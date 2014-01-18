@@ -16,6 +16,10 @@ describe UsersController do
 				expect(User.count).to eq(1)
 			end
 
+			it "puts the user in the session" do
+				expect(session[:user_id]).not_to be_nil
+			end
+
 			it "redirects to root path" do
 				expect(response).to redirect_to root_path
 			end
