@@ -16,5 +16,10 @@ describe RelationshipsController do
 		it_behaves_like "requires sign in" do
 			let(:action) { post :create, leader_id: 3 }
 		end
+
+		it "creates a relationship that the current user follows the leader"
+		it "redirects to the people page"
+		it "does not create a relationship if the current user already follows the leader"
+		it "does not allow a user to follow themself"
 	end
 end
