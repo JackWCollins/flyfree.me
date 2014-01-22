@@ -5,6 +5,7 @@ class Video < ActiveRecord::Base
   has_many :reviews
 
   validates_presence_of :title, :url, :description
+  validates :title, length: { maximum: 100 }
 
   def video_id
   	video = VideoInfo.new(self.url)

@@ -5,7 +5,10 @@
         %div{:class => "alert alert-#{name == :notice ? "info" : "danger"}"}
           %a.close{"data-dismiss" => "alert"} ×
           = content_tag :div, msg, :id => "flash_#{name}"
-    - unless logged_in?
+    -if logged_in?
+      = link_to(new_video_path, class: "btn btn-primary") do
+        Submit a Video &raquo;
+    - else
       .jumbotron.logo-text
         .row
           .col-sm-8
