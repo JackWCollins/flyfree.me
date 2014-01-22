@@ -5,23 +5,24 @@
         %div{:class => "alert alert-#{name == :notice ? "info" : "danger"}"}
           %a.close{"data-dismiss" => "alert"} ×
           = content_tag :div, msg, :id => "flash_#{name}"
-    .jumbotron.logo-text
-      .row
-        .col-sm-8
-          %h1 flyfree.me
-          %p The home for Skydiving and BASE jumping videos submitted by you!
-          %ul.list-inline
-            %li
-              = link_to "Sign In", sign_in_path
-            %li or
-            %li 
-              = link_to "Sign Up", register_path
-            %li to
-            %li
-              = link_to(new_video_path, class: "btn btn-primary") do
-                Submit a Video &raquo;
-        .col-sm-4
-          = link_to "", sign_in_path, class: "logo"
+    - unless logged_in?
+      .jumbotron.logo-text
+        .row
+          .col-sm-8
+            %h1 flyfree.me
+            %p The home for Skydiving and BASE jumping videos submitted by you!
+            %ul.list-inline
+              %li
+                = link_to "Sign In", sign_in_path
+              %li or
+              %li 
+                = link_to "Sign Up", register_path
+              %li to
+              %li
+                = link_to(new_video_path, class: "btn btn-primary") do
+                  Submit a Video &raquo;
+          .col-sm-4
+            = link_to "", sign_in_path, class: "logo"
 
     .row
       %h2.logo-text Featured Videos
