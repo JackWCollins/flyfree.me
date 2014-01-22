@@ -7,7 +7,7 @@ html {
 }
 body {
   padding-top: 70px;
-  background: #CCC url('/assets/clouds.jpg') fixed;
+  background: #CCC url('/assets/linen.png');
   background-position: 50% 50%
 }
 footer {
