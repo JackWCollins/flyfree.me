@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_secure_password validations: false
+
+  def follows?(another_user)
+  	following_relationships.map(&:leader).include?(another_user)
+  end
+
+  def can_follow?(another_user)
+    !(self.follows?(another_user) || self == another_user)
+  end
 end
