@@ -46,4 +46,37 @@ describe RelationshipsController do
 			expect(Relationship.count).to eq(0)
 		end
 	end
+
+	describe "DELETE destroy" do
+		it_behaves_like "requires sign in" do
+			let(:action) { delete :destroy, id: 4 }
+		end
+
+		it "deletes the relationship if the current user is the follower" do
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			relationship = Fabricate(:relationship, leader: bob, follower: alice)
+			set_current_user(alice)
+			delete :destroy, id: relationship
+			expect(Relationship.count).to eq(0)
+		end
+		it "redirects to the user's page" do
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			relationship = Fabricate(:relationship, leader: bob, follower: alice)
+			set_current_user(alice)
+			delete :destroy, id: relationship
+			expect(response).to redirect_to user_path(bob)
+		end
+		it "does not delete the relationship if the current user is not the follower" do
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			charlie = Fabricate(:user)
+			relationship = Fabricate(:relationship, leader: bob, follower: charlie)
+			set_current_user(alice)
+			delete :destroy, id: relationship
+			expect(Relationship.count).to eq(1)
+		end
+
+	end
 end
