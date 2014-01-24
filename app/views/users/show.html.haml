@@ -2,8 +2,13 @@
   .col-sm-10.col-sm-offset-1
     %article
       %header
-        %h2 #{@user.full_name}'s video submissions (#{@user.videos.count})
-        = link_to "Follow", relationships_path(leader_id: @user.id), class: "btn btn-default", method: :post
+        %h3 #{@user.full_name}'s video submissions (#{@user.videos.count})
+        - if current_user.can_follow?(@user)
+          = link_to "Follow", relationships_path(leader_id: @user.id), class: "btn btn-default", method: :post
+        - else
+          = link_to relationship_path(leader_id: @user.id), class: "btn btn-default", method: :delete do
+            %i.glyphicon.glyphicon-remove  
+            Stop Following
       %table.table
         %thead
           %tr
@@ -17,27 +22,25 @@
               %td
                 = link_to video.reviews.count, video
 
-%section.people
-  %header
-    %h2 Followers
-  %table.table
-    %thead
-      %tr
-        %th(width="30%")
-        %th(width="20%") Video Submissions
-        %th(width="20%") Followers
-        %th(width="30%") Unfollow
-    %tbody
-      - @user.leading_relationships.each do |relationship|
+.row
+  .col-sm-10.col-sm-offset-1
+    %header
+      %h3 Followers (#{@user.leading_relationships.count})
+    %table.table
+      %thead
         %tr
-          %td
-            %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(relationship.leader.email.downcase)}?s=40")
-            = link_to relationship.follower.username, relationship.follower
-          %td.extra-padding= relationship.follower.reviews.count
-          %td.extra-padding= relationship.follower.following_relationships.count
-          %td.extra-padding
-            = link_to relationship, method: :delete do
-              %i.glyphicon.glyphicon-remove
+          %th(width="30%")
+          %th(width="20%") Video Submissions
+          %th(width="20%") Followers
+          %th(width="30%") Reviews
+      %tbody
+        - @user.leading_relationships.each do |relationship|
+          %tr
+            %td
+              = link_to relationship.follower.username, relationship.follower
+            %td.extra-padding= relationship.follower.videos.count
+            %td.extra-padding= relationship.follower.leading_relationships.count
+            %td.extra-padding= relationship.follower.reviews.count
 .row
   .col-sm-10.col-sm-offset-1
     %header

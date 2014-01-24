@@ -12,7 +12,7 @@ class RelationshipsController < ApplicationController
 	end
 
 	def destroy
-		relationship = Relationship.find(params[:id])
+		relationship = Relationship.find_by_leader_id(params[:leader_id])
 		leader = relationship.leader
 		relationship.destroy if relationship.follower == current_user
 		redirect_to user_path(leader)
