@@ -35,9 +35,11 @@
           .index-wrapper
             = link_to image_tag(video.thumbnail, size: "304x171"), video_path(video)
             .voting
-              %span.glyphicon.glyphicon-chevron-up
+              = link_to vote_video_path(video, vote: true), method: 'post' do
+                %span.glyphicon.glyphicon-chevron-up
               %p 5
-              %span.glyphicon.glyphicon-chevron-down
+              = link_to vote_video_path(video, vote: false), method: 'post' do
+                %span.glyphicon.glyphicon-chevron-down
             .title-bar
               = link_to "#{video.title}", video
             .title-clear
