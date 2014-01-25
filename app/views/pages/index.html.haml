@@ -37,7 +37,8 @@
             .voting
               = link_to video_votes_path(video, vote: true), method: 'post' do
                 %span.glyphicon.glyphicon-chevron-up
-              %p 5
+              %p
+                = video.total_votes
               = link_to video_votes_path(video, vote: false), method: 'post' do
                 %span.glyphicon.glyphicon-chevron-down
             .title-bar
