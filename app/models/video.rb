@@ -28,6 +28,10 @@ class Video < ActiveRecord::Base
     provider = video.provider
   end
 
+  def total_votes
+    self.up_votes - self.down_votes
+  end
+
   def up_votes
     self.votes.where(vote: true).size
   end

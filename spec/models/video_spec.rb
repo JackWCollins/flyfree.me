@@ -62,4 +62,39 @@ describe Video do
 			expect(video.down_votes).to eq(3)
 		end
 	end
+
+	describe "#total_votes" do
+		it "should return 0 when there are no votes" do
+			video = Fabricate(:video)
+			expect(video.total_votes).to eq(0)
+		end
+		it "should return 0 when there is one upvote and one downvote" do
+			video = Fabricate(:video)
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			vote1 = Vote.create(video_id: video.id, user_id: alice.id, vote: false)
+			vote2 = Vote.create(video_id: video.id, user_id: bob.id, vote: true)
+			expect(video.total_votes).to eq(0)
+		end
+		it "should return 1 when there is one downvote and two upvotes" do
+			video = Fabricate(:video)
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			charlie = Fabricate(:user)
+			vote1 = Vote.create(video_id: video.id, user_id: alice.id, vote: false)
+			vote2 = Vote.create(video_id: video.id, user_id: bob.id, vote: true)
+			vote3 = Vote.create(video_id: video.id, user_id: charlie.id, vote: true)
+			expect(video.total_votes).to eq(1)
+		end
+		it "should return -1 when there is one upvote and two downvotes" do
+			video = Fabricate(:video)
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			charlie = Fabricate(:user)
+			vote1 = Vote.create(video_id: video.id, user_id: alice.id, vote: false)
+			vote2 = Vote.create(video_id: video.id, user_id: bob.id, vote: false)
+			vote3 = Vote.create(video_id: video.id, user_id: charlie.id, vote: true)
+			expect(video.total_votes).to eq(-1)
+		end
+	end
 end
