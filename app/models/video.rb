@@ -3,6 +3,7 @@ class Video < ActiveRecord::Base
 
   belongs_to :user
   has_many :reviews
+  has_many :votes
 
   validates_presence_of :title, :url, :description
   validates :title, length: { maximum: 100 }

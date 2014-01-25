@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Video do
+	it { should have_many(:votes) }
+	
 	describe "video_provider" do
 		it "should return YouTube for a youtube url" do
 		  youtube = Video.create(title: "Youtube Video", description: "A Youtube Video", url: "https://www.youtube.com/watch?v=pIZkgHMMSsM")

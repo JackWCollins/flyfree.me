@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe User do
+	it { should have_many(:votes) }
+
 	it "generates a random token when user is created" do
 		alice = Fabricate(:user)
 		expect(alice.token).to be_present
