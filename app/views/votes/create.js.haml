@@ -1,0 +1,4 @@
+- if @vote.valid? 
+  $("#video_#{@video.id}_votes").html("#{@video.total_votes}");
+- else
+  alert("You can only vote once")

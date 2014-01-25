@@ -35,11 +35,10 @@
           .index-wrapper
             = link_to image_tag(video.thumbnail, size: "304x171"), video_path(video)
             .voting
-              = link_to video_votes_path(video, vote: true), method: 'post' do
+              = link_to video_votes_path(video, vote: true), remote: true, method: 'post' do
                 %span.glyphicon.glyphicon-chevron-up
-              %p
-                = video.total_votes
-              = link_to video_votes_path(video, vote: false), method: 'post' do
+              %p{:id => "video_#{video.id}_votes"}= video.total_votes
+              = link_to video_votes_path(video, vote: false), remote: true, method: 'post' do
                 %span.glyphicon.glyphicon-chevron-down
             .title-bar
               = link_to "#{video.title}", video

@@ -3,7 +3,11 @@ class VotesController < ApplicationController
 
 	def create
 		@video = Video.find(params[:video_id])
-		Vote.create(vote: params[:vote], user: current_user, video_id: @video.id)
-		redirect_to root_path
+		@vote = Vote.create(vote: params[:vote], user: current_user, video_id: @video.id)
+
+		respond_to do |format|
+			format.html { redirect_to @video, notice: "Vote was counted" }
+			format.js {}
+		end
 	end
 end
