@@ -32,13 +32,13 @@
     .row
       - @videos.each do |video|
         .col-6.col-sm-6.col-lg-4
-          .video-thumbnail
+          .index-wrapper
             = link_to image_tag(video.thumbnail, size: "304x171"), video_path(video)
-          .voting
-            %span.glyphicon.glyphicon-chevron-up
-            %p 5
-            %span.glyphicon.glyphicon-chevron-down
-          .title-bar
-            = link_to "#{video.title}", video
-          .title-clear
+            .voting
+              %span.glyphicon.glyphicon-chevron-up
+              %p 5
+              %span.glyphicon.glyphicon-chevron-down
+            .title-bar
+              = link_to "#{video.title}", video
+            .title-clear
           
