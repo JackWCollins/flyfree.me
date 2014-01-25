@@ -1,41 +1,43 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
-gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
-gem 'rails'
-gem 'uglifier'
 gem 'coffee-rails'
-gem 'jquery-rails'
-gem 'turbolinks'
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'rails'
 gem 'haml-rails'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'jquery-rails'
+gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'fabrication'
 gem 'faker'
-gem 'video_info'
+gem 'figaro'
 gem 'dragonfly'
+gem 'video_info'
+gem 'turbolinks'
 
 group :development do
-	gem 'sqlite3'
-	gem 'pry'
-	gem 'pry-nav'
-	gem 'thin'
-	gem 'better_errors'
-	gem 'binding_of_caller'
-	gem 'letter_opener'
+  gem 'sqlite3'
+  gem 'pry-nav'
+  gem 'thin'
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'letter_opener'
 end
 
 group :production do
-	gem 'pg'
-	gem 'rails_12factor'
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :test, :development do
-	gem 'rspec-rails'
+  gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :test do
-	gem 'shoulda-matchers'
-	gem 'capybara'
-	gem 'launchy'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'launchy'
 end

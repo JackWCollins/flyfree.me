@@ -6,6 +6,10 @@ FlyfreeMe::Application.routes.draw do
   get 'sign_out', to: "sessions#destroy"
   get 'people', to: "relationships#index"
 
+  get 'forgot_password', to: "forgot_passwords#new"
+  get 'forgot_password_confirmation', to: "forgot_passwords#confirm"
+  resources :forgot_passwords, only: [:create]
+
   resources :videos do
   	resources :reviews, only: [:create]
   end
