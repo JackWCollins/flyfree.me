@@ -36,10 +36,10 @@
             = link_to image_tag(video.thumbnail, size: "304x171"), video_path(video)
             .voting
               = link_to video_votes_path(video, vote: true), remote: true, method: 'post' do
-                %span.glyphicon.glyphicon-chevron-up
+                %span.glyphicon.glyphicon-chevron-up{:id => "video_#{video.id}_true"}
               %p{:id => "video_#{video.id}_votes"}= video.total_votes
               = link_to video_votes_path(video, vote: false), remote: true, method: 'post' do
-                %span.glyphicon.glyphicon-chevron-down
+                %span.glyphicon.glyphicon-chevron-down{:id => "video_#{video.id}_false"}
             .title-bar
               = link_to "#{video.title}", video
             .title-clear

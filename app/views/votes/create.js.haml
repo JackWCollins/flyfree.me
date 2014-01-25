@@ -1,4 +1,6 @@
 - if @vote.valid? 
   $("#video_#{@video.id}_votes").html("#{@video.total_votes}");
+  $("#video_#{@video.id}_votes").css("color", "white")
+  $("#video_#{@video.id}_#{@vote.vote}").css("color", "white")
 - else
   alert("You can only vote once")
