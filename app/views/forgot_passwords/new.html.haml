@@ -1,6 +1,11 @@
 .well
   .row
     .col-sm-10.col-sm-offset-1
+      - flash.each do |name, msg|
+        - if msg.is_a?(String)
+          %div{:class => "alert alert-#{name == :notice ? "success" : "danger"}"}
+            %a.close{"data-dismiss" => "alert"} ×
+            = content_tag :div, msg, :id => "flash_#{name}"
       = form_tag forgot_passwords_path do
         %header
           %h1 Forgot Password?
