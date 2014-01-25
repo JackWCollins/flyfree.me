@@ -27,4 +27,12 @@ class Video < ActiveRecord::Base
     video = VideoInfo.new(self.url)
     provider = video.provider
   end
+
+  def up_votes
+    self.votes.where(vote: true).size
+  end
+
+  def down_votes
+    self.votes.where(vote: false).size
+  end
 end

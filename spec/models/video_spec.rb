@@ -24,4 +24,42 @@ describe Video do
 			expect(vimeo.thumbnail).not_to be_nil
 		end
 	end
+
+	describe "#up_votes" do
+		it "should return 1 when there is a single upvote" do
+			video = Fabricate(:video)
+			alice = Fabricate(:user)
+			vote = Vote.create(video_id: video.id, user_id: alice.id, vote: true)
+			expect(video.up_votes).to eq(1)
+		end
+		it "should return 3 when there are three upvotes" do
+			video = Fabricate(:video)
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			charlie = Fabricate(:user)
+			vote1 = Vote.create(video_id: video.id, user_id: alice.id, vote: true)
+			vote2 = Vote.create(video_id: video.id, user_id: bob.id, vote: true)
+			vote3 = Vote.create(video_id: video.id, user_id: charlie.id, vote: true)
+			expect(video.up_votes).to eq(3)
+		end
+	end
+
+	describe "#down_votes" do
+		it "should return 1 when there is a single downvote" do
+			video = Fabricate(:video)
+			alice = Fabricate(:user)
+			vote = Vote.create(video_id: video.id, user_id: alice.id, vote: false)
+			expect(video.down_votes).to eq(1)
+		end
+		it "should return 3 when there are three downvotes" do
+			video = Fabricate(:video)
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			charlie = Fabricate(:user)
+			vote1 = Vote.create(video_id: video.id, user_id: alice.id, vote: false)
+			vote2 = Vote.create(video_id: video.id, user_id: bob.id, vote: false)
+			vote3 = Vote.create(video_id: video.id, user_id: charlie.id, vote: false)
+			expect(video.down_votes).to eq(3)
+		end
+	end
 end

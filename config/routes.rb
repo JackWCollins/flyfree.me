@@ -17,9 +17,7 @@ FlyfreeMe::Application.routes.draw do
   # Videos and Nested Reviews
 
   resources :videos do
-    member do
-      post 'vote'
-    end
+    resources :votes, only: [:create]
   	resources :reviews, only: [:create]
   end
 
