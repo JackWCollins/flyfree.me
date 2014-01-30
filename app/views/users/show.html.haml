@@ -1,57 +1,57 @@
-.row
-  .col-sm-10.col-sm-offset-1
-    %article
-      %header
-        %h3 #{@user.full_name}'s video submissions (#{@user.videos.count})
-        - if current_user.can_follow?(@user)
-          = link_to "Follow", relationships_path(leader_id: @user.id), class: "btn btn-default", method: :post
-        - else
-          = link_to relationship_path(leader_id: @user.id), class: "btn btn-default", method: :delete do
-            %i.glyphicon.glyphicon-remove  
-            Stop Following
+.profile-content  
+  .row
+    .col-sm-10.col-sm-offset-1
+      %h3.title #{@user.full_name}
+  .row
+    .col-sm-10.col-sm-offset-1
+      %h4 #{@user.full_name}'s video submissions (#{@user.videos.count})
+      - if current_user.can_follow?(@user)
+        = link_to "Follow", relationships_path(leader_id: @user.id), class: "btn btn-default", method: :post
+      - if current_user.follows?(@user)
+        = link_to relationship_path(leader_id: @user.id), class: "btn btn-default", method: :delete do
+          %i.glyphicon.glyphicon-remove  
+          Stop Following
       %table.table
         %thead
           %tr
             %th(width="30%") Video Title
             %th(width="15%") Reviews
+            %th(width="15%") Votes
         %tbody
           - @user.videos.each do |video|
             %tr
               %td
                 = link_to video.title, video
-              %td
-                = link_to video.reviews.count, video
-
-.row
-  .col-sm-10.col-sm-offset-1
-    %header
-      %h3 Followers (#{@user.leading_relationships.count})
-    %table.table
-      %thead
-        %tr
-          %th(width="30%")
-          %th(width="20%") Video Submissions
-          %th(width="20%") Followers
-          %th(width="30%") Reviews
-      %tbody
-        - @user.leading_relationships.each do |relationship|
+              %td #{video.reviews.count}
+              %td #{video.total_votes}
+  
+  .row
+    .col-sm-10.col-sm-offset-1
+      %header
+        %h4 Followers (#{@user.leading_relationships.count})
+      %table.table
+        %thead
           %tr
-            %td
-              = link_to relationship.follower.username, relationship.follower
-            %td.extra-padding= relationship.follower.videos.count
-            %td.extra-padding= relationship.follower.leading_relationships.count
-            %td.extra-padding= relationship.follower.reviews.count
-.row
-  .col-sm-10.col-sm-offset-1
-    %header
-      %h3 #{@user.full_name}'s Reviews (#{@user.reviews.count})
-    %ul
-      - @user.reviews.each do |review|
-        %article.review
-          %li.row
+            %th(width="30%")
+            %th(width="20%") Video Submissions
+            %th(width="20%") # of Followers
+            %th(width="30%") # Following
+        %tbody
+          - @user.leading_relationships.each do |relationship|
+            %tr
+              %td
+                = link_to relationship.follower.username, relationship.follower
+              %td.extra-padding= relationship.follower.videos.count
+              %td.extra-padding= relationship.follower.leading_relationships.count
+              %td.extra-padding= relationship.follower.following_relationships.count
+  .row
+    .col-sm-10.col-sm-offset-1
+      %h4 #{@user.full_name}'s Reviews (#{@user.reviews.count})
+      %ul
+        - @user.reviews.each do |review|
+          %li.row.review-well
             .col-sm-2
               %p
                 = link_to review.video.title, review.video
-              %col Rating: #{review.rating} / 5
             .col-sm-8
               %p= review.content

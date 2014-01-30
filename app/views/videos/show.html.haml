@@ -13,9 +13,6 @@
     .col-sm-10
       = form_for [@video, Review.new] do |f|
         .form-group
-          %label Rate this video
-          = f.select :rating, options_for_video_reviews, {}, {class: "form-control"}
-        .form-group
           %label Review
           = f.text_area :content, rows: 3, class: "form-control"
         .form-group
@@ -26,7 +23,6 @@
         - @reviews.each do |review|
           %li.row.review-well
             .col-sm-2
-              %span Rating: #{review.rating}
               %p
                 by
                 = link_to review.user.username, review.user
