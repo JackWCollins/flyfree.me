@@ -11,6 +11,8 @@ FlyfreeMe::Application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
+  config.action_mailer.default_url_options = { host: "www.flyfree.me" }
+
 
   # Code is not reloaded between requests.
   config.cache_classes = true
