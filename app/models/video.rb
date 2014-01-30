@@ -13,7 +13,7 @@ class Video < ActiveRecord::Base
   	id = video.video_id
   end
 
-  def thumbnail
+  def get_thumbnail_url
   	video = VideoInfo.new(self.url)
   	provider = video.provider
   	if provider == "YouTube"

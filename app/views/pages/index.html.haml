@@ -33,7 +33,7 @@
       - @videos.each do |video|
         .col-6.col-sm-6.col-lg-4
           .index-wrapper
-            = link_to image_tag(video.thumbnail, size: "304x171"), video_path(video)
+            = link_to image_tag(video.thumbnail_url, size: "304x171"), video_path(video)
             .voting
               = link_to video_votes_path(video, vote: true), remote: true, method: 'post' do
                 %span.glyphicon.glyphicon-chevron-up{:id => "video_#{video.id}_true"}

@@ -7,7 +7,7 @@
     - elsif @video.video_provider == "Vimeo"
       %iframe{:allowfullscreen => "", :frameborder => "0", :height => "562", :mozallowfullscreen => "", :src => "//player.vimeo.com/video/#{@video.video_id}", :webkitallowfullscreen => ""}
   
-  %h4 Submitted by #{@video.user.username}
+  %h4 Submitted by #{link_to "#{@video.user.username}", @video.user}
   
   .row
     .col-sm-10

@@ -7,6 +7,7 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user = current_user
+    @video.thumbnail_url = @video.get_thumbnail_url
     
     if @video.save
     	flash[:notice] = "Your video was submitted!"
