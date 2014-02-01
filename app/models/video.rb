@@ -9,6 +9,8 @@ class Video < ActiveRecord::Base
   validates :title, length: { maximum: 100 }
   validates :description, length: { maximum: 1000 }
 
+  self.per_page = 24
+
   def video_id
   	video = VideoInfo.new(self.url)
   	id = video.video_id

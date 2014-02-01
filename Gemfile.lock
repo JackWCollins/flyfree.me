@@ -179,6 +179,7 @@ GEM
       addressable
       htmlentities
       multi_json
+    will_paginate (3.0.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -215,3 +216,4 @@ DEPENDENCIES
   turbolinks
   uglifier
   video_info
+  will_paginate (~> 3.0.5)

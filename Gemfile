@@ -16,6 +16,7 @@ gem 'figaro'
 gem 'dragonfly'
 gem 'video_info'
 gem 'turbolinks'
+gem 'will_paginate', '~> 3.0.5'
 
 group :development do
   gem 'sqlite3'

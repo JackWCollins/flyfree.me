@@ -43,4 +43,6 @@
             .title-bar
               = link_to "#{video.title}", video
             .title-clear
+    .row
+      = will_paginate @videos, :page_links => false
           
