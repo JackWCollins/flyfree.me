@@ -22,4 +22,23 @@ describe User do
 			expect(alice.follows?(bob)).to be_false
 		end
 	end
+
+	describe "#can_feature?" do
+		it "returns false if the user is not an admin" do
+			video = Fabricate(:video)
+			alice = Fabricate(:user)
+			expect(alice.can_feature?(video)).to be_false
+		end
+
+		it "returns false if the video is already featured and the user is an admin" do
+			video = Fabricate(:video, featured: true)
+			alice = Fabricate(:admin)
+			expect(alice.can_feature?(video)).to be_false
+		end
+		it "returns true if the user is an admin and the video is not featured" do
+			video = Fabricate(:video)
+			alice = Fabricate(:admin)
+			expect(alice.can_feature?(video)).to be_true
+		end
+	end
 end

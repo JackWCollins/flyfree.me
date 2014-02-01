@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201200656) do
+ActiveRecord::Schema.define(version: 20140201214908) do
 
   create_table "relationships", force: true do |t|
     t.integer  "leader_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140201200656) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
+    t.boolean  "admin"
   end
 
   create_table "videos", force: true do |t|

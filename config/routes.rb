@@ -27,4 +27,11 @@ FlyfreeMe::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :sessions, only: [:create, :destroy]
   
+  # Admin
+
+  namespace :admin do
+    resources :videos, only: [:index, :destroy]
+    post 'feature/:id', to: "videos#feature"
+  end
+
 end

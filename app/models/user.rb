@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
   def recent_videos
     videos.first(6)
   end
+
+  def can_feature?(video)
+    !!(self.admin? && !(video.featured?))
+  end
 end
