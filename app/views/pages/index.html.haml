@@ -26,9 +26,9 @@
                   Submit a Video &raquo;
           .col-sm-4
             = link_to image_tag('parachute_hover_top.png', class: "logo"), sign_in_path
-
+    
     .row
-      %h2.logo-text Featured Videos
+      %h2.logo-text Recent Videos
     .row
       - @videos.each do |video|
         .col-6.col-sm-6.col-lg-4
