@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130222315) do
+ActiveRecord::Schema.define(version: 20140201191720) do
 
   create_table "relationships", force: true do |t|
     t.integer  "leader_id"
