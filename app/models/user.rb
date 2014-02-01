@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :videos
+	has_many :videos, -> { order("created_at DESC") }
 	has_many :reviews
 	has_many :following_relationships, class_name: "Relationship", foreign_key: :follower_id
 	has_many :leading_relationships, class_name: "Relationship", foreign_key: :leader_id
@@ -22,5 +22,9 @@ class User < ActiveRecord::Base
 
   def generate_token
     self.token = SecureRandom.urlsafe_base64
+  end
+
+  def recent_videos
+    videos.first(6)
   end
 end

@@ -14,14 +14,18 @@ describe Video do
 		end
 	end
 
-	describe "thumbnail" do
+	describe "#get_thumbnail_url" do
 		it "should return a thumbnail for YouTube videos" do
-			youtube = Video.create(title: "Youtube Video", description: "A Youtube Video", url: "https://www.youtube.com/watch?v=pIZkgHMMSsM")
-			expect(youtube.thumbnail).not_to be_nil
+			alice = Fabricate(:user)
+			youtube = Video.create(title: "Youtube Video", description: "A Youtube Video", url: "https://www.youtube.com/watch?v=pIZkgHMMSsM", user: alice)
+			youtube.thumbnail_url = youtube.get_thumbnail_url
+			expect(youtube.thumbnail_url).not_to be_nil
 		end
 		it "should return a thumbnail for Vimeo videos" do
-			vimeo = Video.create(title: "Vimeo Video", description: "Vimeo Videos are cool", url: "http://vimeo.com/80168312")
-			expect(vimeo.thumbnail).not_to be_nil
+			alice = Fabricate(:user)
+			vimeo = Video.create(title: "Vimeo Video", description: "Vimeo Videos are cool", url: "http://vimeo.com/80168312", user: alice)
+			vimeo.thumbnail_url = vimeo.get_thumbnail_url
+			expect(vimeo.thumbnail_url).not_to be_nil
 		end
 	end
 

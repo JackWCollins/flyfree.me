@@ -45,19 +45,19 @@ describe VideosController do
 				it "does not create the video" do
 					alice = Fabricate(:user)
 					session[:user_id] = alice.id
-					post :create, video: {title: "A title!", url: "www.google.com" }
+					post :create, video: {title: "A title!", url: "http://www.youtube.com/watch?v=pIZkgHMMSsM" }
 					expect(Video.count).to eq(0)
 				end
 				it "renders the :new template" do
 					alice = Fabricate(:user)
 					session[:user_id] = alice.id
-					post :create, video: {title: "A title!", url: "www.google.com" }
+					post :create, video: {title: "A title!", url: "http://www.youtube.com/watch?v=pIZkgHMMSsM" }
 					expect(response).to render_template :new
 				end
 				it "sets @video" do
 					alice = Fabricate(:user)
 					session[:user_id] = alice.id
-					post :create, video: {title: "A title!", url: "www.google.com" }
+					post :create, video: {title: "A title!", url: "http://www.youtube.com/watch?v=pIZkgHMMSsM" }
 					expect(assigns(:video)).to be_instance_of(Video)
 				end
 			end

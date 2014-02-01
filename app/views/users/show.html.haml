@@ -4,11 +4,11 @@
       %h3.title #{@user.full_name}
   .row
     .col-sm-10.col-sm-offset-1
-      %h4 #{@user.full_name}'s video submissions (#{@user.videos.count})
+      %h4 #{@user.full_name}'s recent video submissions (#{@user.videos.count})
       - if current_user.can_follow?(@user)
         = link_to "Follow", relationships_path(leader_id: @user.id), class: "btn btn-default", method: :post
       - if current_user.follows?(@user)
-        = link_to relationship_path(leader_id: @user.id), class: "btn btn-default", method: :delete do
+        = link_to relationship_path, class: "btn btn-default", method: :delete do
           %i.glyphicon.glyphicon-remove  
           Stop Following
       %table.table
@@ -18,7 +18,7 @@
             %th(width="15%") Reviews
             %th(width="15%") Votes
         %tbody
-          - @user.videos.each do |video|
+          - @user.recent_videos.each do |video|
             %tr
               %td
                 = link_to video.title, video

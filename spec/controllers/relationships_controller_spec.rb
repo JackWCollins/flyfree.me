@@ -54,19 +54,19 @@ describe RelationshipsController do
 
 		it "deletes the relationship if the current user is the follower" do
 			alice = Fabricate(:user)
+			set_current_user(alice)
 			bob = Fabricate(:user)
 			relationship = Fabricate(:relationship, leader: bob, follower: alice)
-			set_current_user(alice)
 			delete :destroy, id: relationship
 			expect(Relationship.count).to eq(0)
 		end
-		it "redirects to the user's page" do
+		it "redirects to the root path" do
 			alice = Fabricate(:user)
 			bob = Fabricate(:user)
 			relationship = Fabricate(:relationship, leader: bob, follower: alice)
 			set_current_user(alice)
 			delete :destroy, id: relationship
-			expect(response).to redirect_to user_path(bob)
+			expect(response).to redirect_to root_path
 		end
 		it "does not delete the relationship if the current user is not the follower" do
 			alice = Fabricate(:user)

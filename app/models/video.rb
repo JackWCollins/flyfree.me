@@ -7,6 +7,7 @@ class Video < ActiveRecord::Base
 
   validates_presence_of :title, :url, :description
   validates :title, length: { maximum: 100 }
+  validates :description, length: { maximum: 1000 }
 
   def video_id
   	video = VideoInfo.new(self.url)

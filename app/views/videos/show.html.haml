@@ -8,8 +8,17 @@
       %iframe{:allowfullscreen => "", :frameborder => "0", :height => "562", :mozallowfullscreen => "", :src => "//player.vimeo.com/video/#{@video.video_id}", :webkitallowfullscreen => ""}
   
   %h4 Submitted by #{link_to "#{@video.user.username}", @video.user}
+  %p
+    = @video.description
   
   .row
+    .col-sm-1
+      .voting
+        = link_to video_votes_path(@video, vote: true), remote: true, method: 'post' do
+          %span.glyphicon.glyphicon-chevron-up{:id => "video_#{@video.id}_true"}
+        %p{:id => "video_#{@video.id}_votes"}= @video.total_votes
+        = link_to video_votes_path(@video, vote: false), remote: true, method: 'post' do
+          %span.glyphicon.glyphicon-chevron-down{:id => "video_#{@video.id}_false"}
     .col-sm-10
       = form_for [@video, Review.new] do |f|
         .form-group
