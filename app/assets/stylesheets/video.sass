@@ -2,10 +2,13 @@
 
 div.video-thumbnail
   float: left
-div.title-clear
-  background: none
-  height: 15px
-  width: 320px
+
+span.video-link
+  display: inline-block
+  padding-top: 32px
+  padding-left: 10px
+  a
+    color: white
 
 // video show page display
 
@@ -62,8 +65,15 @@ div.video-wrapper
 
 // Videos on Index Page
 
+div.index-block
+  min-height: 251px
+  float: none
+  vertical-align: middle
+
 div.index-wrapper
   position: relative
+  background: #1b1b1b
+  margin-bottom: 20px
   img
     display: inline
     width: 92%
@@ -97,8 +107,8 @@ div.index-wrapper
 
 // Featured Videos
 
-.feature-row
-  display: table
+.feature-header
+  color: #ff7900
 
 div.featured-wrapper
   position: relative
@@ -127,13 +137,13 @@ div.featured-wrapper
 
 
 div.featured-content
-  position: absolute
   top: 0
   bottom: 0
   padding-left: 8px
   width: 100%
   height: 100%
   color: white
+  min-height: 200px
   a
     color: #FF7900
     text-decoration: none

@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :require_user, except: [:show]
+  before_action :require_user, except: [:show, :featured]
   def new
   	@video = Video.new
   end
@@ -20,6 +20,10 @@ class VideosController < ApplicationController
   def show
     @video = Video.find(params[:id])
     @reviews = @video.reviews
+  end
+
+  def featured
+    @videos = Video.featured.order(created_at: :desc).page(params[:page])
   end
   
   private

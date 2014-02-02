@@ -20,6 +20,7 @@ FlyfreeMe::Application.routes.draw do
     resources :votes, only: [:create]
   	resources :reviews, only: [:create]
   end
+  get 'featured', to: "videos#featured"
 
   # Users, Sessions, and Relationships
 

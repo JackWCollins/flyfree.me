@@ -1,0 +1,22 @@
+.row
+  .col-xs-12
+    .row
+      %h2.feature-header All Featured Videos
+    - @videos.each do |video|
+      .row
+        .col-6.col-sm-12.col-lg-6
+          .featured-wrapper
+            = link_to image_tag(video.thumbnail_url, size: "304x171"), video_path(video)
+            .voting
+              = link_to video_votes_path(video, vote: true), remote: true, method: 'post' do
+                %span.glyphicon.glyphicon-chevron-up{:id => "video_#{video.id}_true"}
+              %p{:id => "video_#{video.id}_votes"}= video.total_votes
+              = link_to video_votes_path(video, vote: false), remote: true, method: 'post' do
+                %span.glyphicon.glyphicon-chevron-down{:id => "video_#{video.id}_false"}
+        .col-6.col-sm-12.col-lg-6
+          .featured-content
+            = link_to "#{video.title}", video
+            %hr
+            %p Submitted by #{link_to "#{video.user.username}", user_path(video.user)}
+            .description
+              = video.description
