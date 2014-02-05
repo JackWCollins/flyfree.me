@@ -56,6 +56,7 @@ describe User do
 			vote2 = Vote.create(video_id: video.id, user_id: bob.id, vote: true)
 			expect(alice.user_votes).to eq(2)
 		end
+		
 		it "should return the total number of combined votes from all videos if the user has three videos" do
 			alice = Fabricate(:user)
 			bob = Fabricate(:user)
