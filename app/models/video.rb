@@ -44,4 +44,8 @@ class Video < ActiveRecord::Base
   def down_votes
     self.votes.where(vote: false).size
   end
+
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
 end
