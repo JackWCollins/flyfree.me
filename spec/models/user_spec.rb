@@ -41,4 +41,34 @@ describe User do
 			expect(alice.can_feature?(video)).to be_true
 		end
 	end
+
+	describe "#user_votes" do
+		it "should return 0 if the user doesn't have any videos" do
+			alice = Fabricate(:user)
+			expect(alice.user_votes).to eq(0)
+		end
+
+		it "should return the total number of votes from ones video if the user has only one video" do
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			video = Fabricate(:video, user: alice)
+			vote1 = Vote.create(video_id: video.id, user_id: alice.id, vote: true)
+			vote2 = Vote.create(video_id: video.id, user_id: bob.id, vote: true)
+			expect(alice.user_votes).to eq(2)
+		end
+		it "should return the total number of combined votes from all videos if the user has three videos" do
+			alice = Fabricate(:user)
+			bob = Fabricate(:user)
+			charlie = Fabricate(:user)
+			dan = Fabricate(:user)
+			video = Fabricate(:video, user: alice)
+			video2 = Fabricate(:video, user: alice)
+			video3 = Fabricate(:video, user: alice)
+			vote1 = Vote.create(video_id: video.id, user_id: alice.id, vote: true)
+			vote2 = Vote.create(video_id: video2.id, user_id: bob.id, vote: true)
+			vote3 = Vote.create(video_id: video2.id, user_id: charlie.id, vote: true)
+			vote3 = Vote.create(video_id: video3.id, user_id: dan.id, vote: true)
+			expect(alice.user_votes).to eq(4)
+		end
+	end
 end

@@ -1,10 +1,12 @@
+- title @user.username
+
 .profile-content  
   .row
     .col-sm-10.col-sm-offset-1
-      %h3.title #{@user.full_name}
+      %h3.title #{@user.username}
   .row
     .col-sm-10.col-sm-offset-1
-      %h4 #{@user.full_name}'s recent video submissions (#{@user.videos.count})
+      %h4 #{@user.username}'s recent video submissions (#{@user.videos.count})
       - if current_user.can_follow?(@user)
         = link_to "Follow", relationships_path(leader_id: @user.id), class: "btn btn-default", method: :post
       - if current_user.follows?(@user)
@@ -46,7 +48,7 @@
               %td.extra-padding= relationship.follower.following_relationships.count
   .row
     .col-sm-10.col-sm-offset-1
-      %h4 #{@user.full_name}'s Reviews (#{@user.reviews.count})
+      %h4 #{@user.username}'s Reviews (#{@user.reviews.count})
       %ul
         - @user.reviews.each do |review|
           %li.row.review-well

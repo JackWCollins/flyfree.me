@@ -31,4 +31,10 @@ class User < ActiveRecord::Base
   def can_feature?(video)
     !!(self.admin? && !(video.featured?))
   end
+
+  def user_votes
+    user_votes = 0
+    self.videos.each { |vid| user_votes += vid.total_votes}
+    user_votes
+  end
 end
