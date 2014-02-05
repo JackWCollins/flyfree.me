@@ -1,18 +1,12 @@
 - title "Submit a Video"
 
-%h2 Submit a Video
+%h2.feature-header Submit a Video
 .well
   = render "shared/errors", obj: @video
   .row
     .col-sm-10.col-sm-offset-1
-      = form_for @video do |f|
-        .form-group
-          = f.label "Title:"
-          = f.text_field :title, class: "form-control"
-        .form-group
-          = f.label "URL:"
-          = f.text_field :url, class: "form-control"
-        .form-group
-          = f.label "Description:"
-          = f.text_area :description, class: "form-control", rows: "6"
+      = bootstrap_form_for @video do |f|
+        = f.text_field :title, class: "form-control", placeholder: "Skydiving"
+        = f.text_field :url, class: "form-control", help: "Currently we only support YouTube or Vimeo videos", placeholder: "YouTube or Vimeo URL"
+        = f.text_area :description, class: "form-control", rows: "6"
         = f.submit(@video.new_record? ? "Submit Video" : "Update Video", class: 'btn btn-primary')

@@ -1,18 +1,12 @@
 - title "Register"
 
-%h2 Register for flyfree.me
+%h2.feature-header Register for flyfree.me
 .well
   = render "shared/errors", obj: @user
   .row
     .col-sm-10.col-sm-offset-1
-      = form_for @user do |f|
-        .form-group
-          = f.label "Email"
-          = f.email_field :email, class: "form-control"
-        .form-group
-          = f.label "Password"
-          = f.password_field :password, class: "form-control"
-        .form-group
-          = f.label "Username"
-          = f.text_field :username, class: "form-control"
+      = bootstrap_form_for @user do |f|
+        = f.email_field :email, class: "form-control", help: "We will never sell your information. Emails are used only if you forget your password", placeholder: "example@gmail.com"
+        = f.password_field :password, class: "form-control"
+        = f.text_field :username, class: "form-control", placeholder: "flyfree.me"
         = f.submit("Register!", class: 'btn btn-primary')
