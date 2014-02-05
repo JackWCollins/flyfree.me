@@ -1,7 +1,7 @@
 !!!
 %html{:lang => "en"}
   %head
-    %title flyfree.me
+    %title flyfree.me | #{yield :title}
     %meta{:charset => "utf-8"}
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
@@ -9,6 +9,7 @@
     %meta{:content => "", :name => "author"}
     %link{:href => "../../dist/css/bootstrap.min.css", :rel => "stylesheet"}
     %link{:href => "../../docs-assets/ico/favicon.png", :rel => "shortcut icon"}
+    = favicon_link_tag 'parachute_hover_small.png'
     = csrf_meta_tag
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"

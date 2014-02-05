@@ -1,3 +1,5 @@
+- title @video.title
+
 .video-content
   %h2 #{@video.title}
   .video-wrapper
@@ -8,7 +10,7 @@
       %iframe{:allowfullscreen => "", :frameborder => "0", :height => "562", :mozallowfullscreen => "", :src => "//player.vimeo.com/video/#{@video.video_id}", :webkitallowfullscreen => ""}
   
   %h4 Submitted by #{link_to "#{@video.user.username}", @video.user}
-  - if current_user && current_user.can_feature?
+  - if current_user && current_user.can_feature?(@video)
     = link_to "Feature", admin_path(@video), class: "btn btn-danger", method: :post if current_user.can_feature?(@video)
   %p
     = @video.description
