@@ -4,12 +4,13 @@
   .row
     .col-sm-10.col-sm-offset-1
       %h3.title #{@user.username}
+      %p Total Votes: #{@user.user_votes}
   .row
     .col-sm-10.col-sm-offset-1
       %h4 #{@user.username}'s recent video submissions (#{@user.videos.count})
-      - if current_user.can_follow?(@user)
+      - if current_user && current_user.can_follow?(@user)
         = link_to "Follow", relationships_path(leader_id: @user.id), class: "btn btn-default", method: :post
-      - if current_user.follows?(@user)
+      - if current_user && current_user.follows?(@user)
         = link_to relationship_path, class: "btn btn-default", method: :delete do
           %i.glyphicon.glyphicon-remove  
           Stop Following
