@@ -9,11 +9,11 @@
   .collapse.navbar-collapse
     %ul.nav.navbar-nav
       %li
-        %a{:href => "#"} Home
+        = link_to "About", about_path
       %li
-        %a{:href => "#about"} About
+        = link_to "Contact", contact_path
       %li
-        %a{:href => "#contact"} Contact
+        = link_to "Submit", new_video_path
     %ul.nav.navbar-nav.pull-right
       - if logged_in?
         %li.dropdown

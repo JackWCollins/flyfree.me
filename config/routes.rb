@@ -1,5 +1,7 @@
 FlyfreeMe::Application.routes.draw do
   root 'pages#index'
+  get 'about', to: "pages#about"
+  get 'contact', to: "pages#contact"
   get 'register', to: "users#new"
   get 'sign_in', to: "sessions#new"
   post 'sign_in', to: "sessions#create"
