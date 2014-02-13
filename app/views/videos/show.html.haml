@@ -11,7 +11,8 @@
   
   %h4 Submitted by #{link_to "#{@video.user.username}", @video.user}
   - if current_user && current_user.can_feature?(@video)
-    = link_to "Feature", admin_path(@video), class: "btn btn-danger", method: :post if current_user.can_feature?(@video)
+    = link_to "Feature", admin_path(@video), class: "btn btn-primary", method: :post if current_user.can_feature?(@video)
+  = link_to "Delete", admin_video_path(@video), class: "btn btn-danger", method: :delete
   %p
     = @video.description
   .row
