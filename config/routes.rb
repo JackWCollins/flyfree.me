@@ -34,6 +34,7 @@ FlyfreeMe::Application.routes.draw do
 
   namespace :admin do
     resources :videos, only: [:index, :destroy]
+    resources :users, only: [:index]
     post 'feature/:id', to: "videos#feature"
   end
 

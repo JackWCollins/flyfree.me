@@ -1,0 +1,21 @@
+.profile-content  
+  .row
+    .col-sm-12
+      %table.table
+        %thead
+          %tr
+            %th(width="30%") Username
+            %th(width="20%") Join Date
+            %th(width="20%") Video Submissions
+            %th(width="10%") Featured Videos
+            %th(width="20%") Total Votes
+  
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td
+                = link_to user.username, user
+              %td #{user.created_at}
+              %td #{user.videos.count}
+              %td #{user.videos.featured.count}
+              %td #{user.user_votes}
