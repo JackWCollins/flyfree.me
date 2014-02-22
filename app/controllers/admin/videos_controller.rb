@@ -18,13 +18,4 @@ class Admin::VideosController < ApplicationController
     flash[:success] = "The video was deleted"
     redirect_to root_path
   end
-
-  private
-
-  def require_admin
-  	unless current_user.admin?
-  		flash[:danger] = "You are not authorized to do that"
-  		redirect_to root_path
-  	end
-  end
 end
