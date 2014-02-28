@@ -51,6 +51,10 @@
             %p Submitted by #{link_to "#{video.user.username}", user_path(video.user)}
             .description
               = video.description
+    %span.video-link
+      = link_to featured_path do
+        see all featured videos
+        %span.glyphicon.glyphicon-chevron-right
     .row
       %h2.logo-text Recent Videos
     .row
