@@ -65,6 +65,6 @@
                 %p{:id => "video_#{video.id}_votes"}= video.total_votes
               .title-bar
                 = link_to "#{video.title}", video
-    .row
+    .row.custom_pagination
       = will_paginate @videos, :page_links => false
           
