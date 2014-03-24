@@ -67,4 +67,8 @@
                 = link_to "#{video.title}", video
     .row.custom_pagination
       = will_paginate @standard_videos, :page_links => false
+      %p
+      = link_to featured_path do
+        or, view featured videos
+        %span.glyphicon.glyphicon-chevron-right
           
