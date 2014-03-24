@@ -35,7 +35,7 @@
         = link_to featured_path do
           see all featured videos
           %span.glyphicon.glyphicon-chevron-right
-    - @videos.featured.first(3).each do |video|
+    - @featured_videos.first(3).each do |video|
       .row
         .col-6.col-sm-12.col-lg-6
           .featured-wrapper
@@ -54,7 +54,7 @@
     .row
       %h2.logo-text Recent Videos
     .row
-      - @videos.each do |video|
+      - @standard_videos.each do |video|
         .col-6.col-sm-6.col-lg-4
           .index-block
             .index-wrapper
@@ -66,5 +66,5 @@
               .title-bar
                 = link_to "#{video.title}", video
     .row.custom_pagination
-      = will_paginate @videos, :page_links => false
+      = will_paginate @standard_videos, :page_links => false
           

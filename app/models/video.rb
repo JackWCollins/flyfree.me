@@ -12,6 +12,7 @@ class Video < ActiveRecord::Base
   self.per_page = 24
 
   scope :featured, -> { where(featured: true) }
+  scope :standard, -> { where(featured: nil) }
 
   def video_id
   	video = VideoInfo.new(self.url)
