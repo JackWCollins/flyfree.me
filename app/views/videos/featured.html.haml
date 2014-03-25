@@ -4,7 +4,7 @@
   .col-xs-12
     .row
       %h2.feature-header All Featured Videos
-    - @videos.each do |video|
+    - @featured_videos.each do |video|
       .row
         .col-6.col-sm-12.col-lg-6
           .featured-wrapper
@@ -22,3 +22,5 @@
             %p Submitted by #{link_to "#{video.user.username}", user_path(video.user)}
             .description
               = video.description
+    .row.custom_pagination
+      = will_paginate @featured_videos, :page_links => false

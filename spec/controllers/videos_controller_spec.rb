@@ -86,11 +86,11 @@ describe VideosController do
 	end
 
 	describe "GET featured" do
-		it "sets the @videos without requiring sign in" do
+		it "sets the @featured_videos without requiring sign in" do
 			vimeo = Fabricate(:video, featured: true)
 			youtube = Fabricate(:video, featured: true)
 			get 'featured'
-			expect(assigns(:videos)).to eq([youtube, vimeo])
+			expect(assigns(:featured_videos)).to eq([youtube, vimeo])
 		end
 	end
 end

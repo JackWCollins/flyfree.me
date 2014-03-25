@@ -23,7 +23,7 @@ class VideosController < ApplicationController
   end
 
   def featured
-    @videos = Video.featured.order(created_at: :desc).page(params[:page])
+    @featured_videos = Video.featured.order(created_at: :desc).page(params[:page])
   end
   
   private
